@@ -1,0 +1,20 @@
+{
+  "repositories": [
+    {
+      "repositoryId": "111111",
+      "repositoryName": "repo_a"
+    },
+    {
+      "repositoryId": "222222",
+      "repositoryName": "repo_b"
+    },
+    {
+      "repositoryId": "333333",
+      "repositoryName": "repo_c"
+    },
+    {
+      "repositoryId": "444444",
+      "repositoryName": "repo_d"
+    }
+  ]
+}
