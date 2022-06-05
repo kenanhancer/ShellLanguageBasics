@@ -1,0 +1,16 @@
+{
+    "workers": [
+        {
+            "id": 1,
+            "name": "worker1"
+        },
+        {
+            "id": 2,
+            "name": "worker2"
+        },
+        {
+            "id": 3,
+            "name": "worker3"
+        }
+    ]
+}
