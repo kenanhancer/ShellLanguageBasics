@@ -120,7 +120,7 @@ for x in $(seq 1 3); do
 done
 
 
-echo "hello world i am here" | tr '[:lower:]' '[:upper:]' | tr ' ' '\n'
+echo "hello world my name is Kenan" | tr '[:lower:]' '[:upper:]' | tr ' ' '\n'
 
 for word in hello world i am here; do
   echo $word | tr '[:lower:]' '[:upper:]'  
