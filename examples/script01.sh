@@ -74,7 +74,7 @@ while read item; do
 done < <( for n in 1 2 3 4 5 6; do echo $n; done )
 
  
-while IFS= read item; do
+while read item; do
     echo "Item is $item"
 done < <(echo "Monday"; echo "Tuesday"; echo "Wednesday"; echo "Thursday"; echo "Friday"; echo "Saturday"; echo "Sunday")
 
