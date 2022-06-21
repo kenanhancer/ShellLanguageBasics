@@ -16,6 +16,7 @@ John Smith|Accounting|January
 Erica Meyers|IT|December
 EOF
 
+
 # Process substitution and input redirection usage with while loop
 while IFS="|" read -r name department birthDate
 do
@@ -26,6 +27,37 @@ Erica Meyers|IT|December
 EOF
 )
 
+
+while IFS="|" read -r name department birthDate
+do
+    echo "$name works in the ${department} department, and was born in $birthDate."
+done < <(echo "John Smith|Accounting|January;Erica Meyers|IT|December" | tr ";" "\n")
+
+
+while IFS="|" read -r name department birthDate
+do
+    echo "$name works in the ${department} department, and was born in $birthDate."
+done < <(tr ";" "\n" < <(echo "John Smith|Accounting|January;Erica Meyers|IT|December"))
+
+
+while IFS="|" read -r name department birthDate
+do
+    echo "$name works in the ${department} department, and was born in $birthDate."
+done < <(tr ";" "\n" <<<$(echo "John Smith|Accounting|January;Erica Meyers|IT|December"))
+
+
+while IFS="|" read -r name department birthDate
+do
+    echo "$name works in the ${department} department, and was born in $birthDate."
+done < <(tr ";" "\n" <<<"John Smith|Accounting|January;Erica Meyers|IT|December")
+
+
+while IFS="|" read -r name department birthDate
+do
+    echo "$name works in the ${department} department, and was born in $birthDate."
+done <<<$(echo "John Smith|Accounting|January;Erica Meyers|IT|December" | tr ";" "\n")
+
+
 # Process substitution and input redirection usage
 while IFS="|" read -r -d "; " name department birthDate
 do
@@ -33,7 +65,26 @@ do
 done <<<"John Smith|Accounting|January;Erica Meyers|IT|December;" # we should put ; character end of string so that delimeter works properly
 
 
-while IFS="|" read -r name department birthDate
+echo "John Smith|Accounting|January;Erica Meyers|IT|December" | tr ";" "\n" | while IFS="|" read -r name department birthDate
 do
     echo "$name works in the ${department} department, and was born in $birthDate."
-done <<<$(echo "John Smith|Accounting|January;Erica Meyers|IT|December" | tr ";" "\n")
+done
+
+
+tr ";" "\n" <<<$(echo "John Smith|Accounting|January;Erica Meyers|IT|December") | while IFS="|" read -r name department birthDate
+do
+    echo "$name works in the ${department} department, and was born in $birthDate."
+done
+
+tr ";" "\n" <<<"John Smith|Accounting|January;Erica Meyers|IT|December" | while IFS="|" read -r name department birthDate
+do
+    echo "$name works in the ${department} department, and was born in $birthDate."
+done
+
+
+tr ";" "\n" < <(echo "John Smith|Accounting|January;Erica Meyers|IT|December") | while IFS="|" read -r name department birthDate
+do
+    echo "$name works in the ${department} department, and was born in $birthDate."
+done
+
+
