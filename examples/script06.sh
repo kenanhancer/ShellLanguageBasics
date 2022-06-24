@@ -23,3 +23,7 @@ do
     echo -e "name is $name, hireDate is $hireDate, salary is $salary, sickDaysRemaining is $sickDaysRemaining"
 done <<<$(tail -n $((`wc -l <<<$hrData` - 1)) <<<$hrData)
 
+while IFS="," read -r name hireDate salary sickDaysRemaining
+do
+    echo -e "name is $name, hireDate is $hireDate, salary is $salary, sickDaysRemaining is $sickDaysRemaining"
+done < <(wc -l <<<$hrData | read n; tail -n $n <<<$hrData)
