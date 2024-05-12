@@ -1,0 +1,22 @@
+# Start from a basic Windows Server Core image
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2022
+
+# Install Chocolatey - Windows package manager
+RUN powershell -Command \
+    Set-ExecutionPolicy Bypass -Process -Force; \
+    iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex;
+
+# Install OpenJDK using Chocolatey
+RUN powershell -Command choco install openjdk -y;
+
+# Install Git for Windows via Chocolatey which provides Bash
+RUN powershell -Command choco install git -y;
+
+# Optionally install Maven via Chocolatey
+RUN powershell -Command choco install maven -y;
+
+# Set Git Bash as the default shell for running commands
+SHELL ["C:\\Program Files\\Git\\bin\\bash.exe", "-c"]
+
+# Set a default command or entry point
+CMD ["bash"]
